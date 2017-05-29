@@ -99,12 +99,11 @@ public class GuardloginActivity extends AppCompatActivity {
             if(view.getId()==R.id.forgotpasswordg){
                 Intent i = new Intent(GuardloginActivity.this,GuardForgetPasswordActivity.class);
                 startActivity(i);
-                finish();
+                //finish();
             }else{
                 Intent i = new Intent(GuardloginActivity.this,GuardChangePasswordActivity.class);
                 startActivity(i);
                 //finish();
-
             }
         }
     }

@@ -99,7 +99,7 @@ public class TeacherloginActivity extends AppCompatActivity {
                 if(view.getId()==R.id.forgotpasswordt){
                     Intent i = new Intent(TeacherloginActivity.this,TeacherForgetPasswordActivity.class);
                     startActivity(i);
-                    finish();
+                    //finish();
                 }else{
                     Intent i = new Intent(TeacherloginActivity.this,TeacherChangePasswordActivity.class);
                     startActivity(i);
@@ -139,7 +139,7 @@ public class TeacherloginActivity extends AppCompatActivity {
                     editor.putBoolean("loggedin", true);
                     editor.putString("username", input_username);
                     editor.commit();
-                    Toast.makeText(getApplicationContext(),"Login Success!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Login Success!",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(TeacherloginActivity.this, TeacherhomeActivity.class);
                     startActivity(intent);
                     finish();
