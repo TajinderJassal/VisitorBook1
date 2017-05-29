@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import auribises.com.visitorbook.Class.AdminLogin;
+import auribises.com.visitorbook.MainActivity;
 import auribises.com.visitorbook.R;
 import auribises.com.visitorbook.Util;
 import butterknife.ButterKnife;
@@ -140,7 +141,7 @@ public class AdminloginActivity extends AppCompatActivity {
                     editor.putString("username", input_username);
                     editor.commit();
                     Toast.makeText(getApplicationContext(),"Login Success!",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(AdminloginActivity.this, AdminhomeActivity.class);
+                    Intent intent = new Intent(AdminloginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }else{
