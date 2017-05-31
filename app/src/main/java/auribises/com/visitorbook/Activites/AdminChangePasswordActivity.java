@@ -1,7 +1,6 @@
 package auribises.com.visitorbook.Activites;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +24,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import auribises.com.visitorbook.Class.Login;
 import auribises.com.visitorbook.Class.RegisterAdmin;
 import auribises.com.visitorbook.R;
 import auribises.com.visitorbook.Util;

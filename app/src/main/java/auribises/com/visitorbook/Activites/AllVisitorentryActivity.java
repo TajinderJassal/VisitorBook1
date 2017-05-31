@@ -98,16 +98,16 @@ public class AllVisitorentryActivity extends AppCompatActivity implements Adapte
     }
     void Visitor() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Exit ");
-        builder.setMessage("Do you wish to Exit?");
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setTitle("Logout ");
+        builder.setMessage("Do you wish to Logout?");
+        builder.setPositiveButton("Finish", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
-                Intent j= new Intent(AllVisitorentryActivity.this, GuardhomeActivity.class);
-                startActivity(j);
-                retrieveFromCloud();
-
+                Intent intent = new Intent();
+                intent.putExtra("exitSignal",1);
+                setResult(302,intent);
+                finish();
+                Log.i("test","----1");
             }
 
         });
@@ -265,11 +265,7 @@ public class AllVisitorentryActivity extends AppCompatActivity implements Adapte
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode==Util.UPREQCODE&&resultCode==Util.UPRESCODE){
-//            Teacher teacher=(Teacher)data.getSerializableExtra(Util.keyresult);
-//            teacherList.set(pos,teacher);
-//            adapter.notifyDataSetChanged();
-//        }
+
     }
 
     void showVisitorentry(){

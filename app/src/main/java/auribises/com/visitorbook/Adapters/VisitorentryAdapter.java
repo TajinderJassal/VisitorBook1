@@ -2,7 +2,6 @@ package auribises.com.visitorbook.Adapters;
 
 import android.content.Context;
 import auribises.com.visitorbook.Class.Visitorentry;
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,8 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import auribises.com.visitorbook.Class.Visitorentry;
 import auribises.com.visitorbook.R;
 
 

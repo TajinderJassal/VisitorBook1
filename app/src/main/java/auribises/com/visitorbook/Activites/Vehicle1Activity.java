@@ -1,6 +1,5 @@
 package auribises.com.visitorbook.Activites;
 
-
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -17,25 +16,16 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import auribises.com.visitorbook.Adapters.TeacherAdapter;
 import auribises.com.visitorbook.Adapters.VehicleAdapter;
-import auribises.com.visitorbook.Class.Teacher;
 import auribises.com.visitorbook.Class.Vehicle;
 import auribises.com.visitorbook.R;
 import auribises.com.visitorbook.Util;
@@ -97,9 +87,6 @@ public class Vehicle1Activity extends AppCompatActivity implements AdapterView.O
 
             }
         });
-
-
-        //retrieveFromDB();
 
         retrieveFromCloud();
     }
@@ -220,8 +207,6 @@ public class Vehicle1Activity extends AppCompatActivity implements AdapterView.O
                         intent.putExtra("keyVehicle",vehicle);
                         startActivity(intent);
                         break;
-
-
                 }
 
             }
@@ -236,7 +221,4 @@ public class Vehicle1Activity extends AppCompatActivity implements AdapterView.O
         builder.setPositiveButton("Done",null);
         builder.create().show();
     }
-
-
-
 }

@@ -25,7 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
-import auribises.com.visitorbook.Class.Login;
+import auribises.com.visitorbook.Class.TeacherLogin;
 import auribises.com.visitorbook.R;
 import auribises.com.visitorbook.Util;
 import butterknife.ButterKnife;
@@ -60,7 +60,8 @@ public class TeacherloginActivity extends AppCompatActivity {
     JSONObject jsonObjectLog;
     RequestQueue requestQueue;
     ProgressDialog progressDialog;
-    Login login;
+
+    TeacherLogin teacherlogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +73,7 @@ public class TeacherloginActivity extends AppCompatActivity {
         progressDialog.setMessage("Please Wait..");
         progressDialog.setCancelable(false);
 
-        login=new Login();
+        teacherlogin = new TeacherLogin();
         requestQueue = Volley.newRequestQueue(this);
     }
 
@@ -85,8 +86,8 @@ public class TeacherloginActivity extends AppCompatActivity {
 
     public void onClickTeacher(View view) {
         if (view.getId() == R.id.button) {
-            login.setUsername(editTextname.getText().toString().trim());
-            login.setPassword(editTextpass.getText().toString().trim());
+            teacherlogin.setUsername(editTextname.getText().toString().trim());
+            teacherlogin.setPassword(editTextpass.getText().toString().trim());
             if (validation()) {
                 if (isNetworkConnected()) {
                     login();
@@ -99,11 +100,10 @@ public class TeacherloginActivity extends AppCompatActivity {
                 if(view.getId()==R.id.forgotpasswordt){
                     Intent i = new Intent(TeacherloginActivity.this,TeacherForgetPasswordActivity.class);
                     startActivity(i);
-                    //finish();
+
                 }else{
                     Intent i = new Intent(TeacherloginActivity.this,TeacherChangePasswordActivity.class);
                     startActivity(i);
-                    //finish();
 
                 }
         }
@@ -139,12 +139,12 @@ public class TeacherloginActivity extends AppCompatActivity {
                     editor.putBoolean("loggedin", true);
                     editor.putString("username", input_username);
                     editor.commit();
-                    Toast.makeText(getApplicationContext(),"Login Success!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Teacher Login Success!",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(TeacherloginActivity.this, TeacherhomeActivity.class);
                     startActivity(intent);
                     finish();
                 }else{
-                    Toast.makeText(TeacherloginActivity.this,"Login Failure!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(TeacherloginActivity.this,"Teacher Login Failure!",Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {
@@ -178,11 +178,11 @@ public class TeacherloginActivity extends AppCompatActivity {
 
     boolean  validation(){
         boolean flag =true;
-        if(login.getUsername().isEmpty()){
+        if(teacherlogin.getUsername().isEmpty()){
             flag=false;
             editTextname.setError("Please Enter Username");
         }
-        if(login.getPassword().isEmpty()  ){
+        if(teacherlogin.getPassword().isEmpty()  ){
             flag=false;
             editTextpass.setError("Please Enter Password");
         }

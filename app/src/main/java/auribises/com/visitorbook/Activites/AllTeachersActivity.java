@@ -36,7 +36,6 @@ import java.util.Map;
 
 import auribises.com.visitorbook.Adapters.TeacherAdapter;
 import auribises.com.visitorbook.Class.Teacher;
-import auribises.com.visitorbook.MainActivity;
 import auribises.com.visitorbook.R;
 import auribises.com.visitorbook.Util;
 import butterknife.ButterKnife;
@@ -104,20 +103,21 @@ public class AllTeachersActivity extends AppCompatActivity implements AdapterVie
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Logout ");
         builder.setMessage("Do you wish to Logout?");
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Finish", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
-                Intent j= new Intent(AllTeachersActivity.this, HomeActivity.class);
-                startActivity(j);
-                retrieveFromCloud();
-
+                Intent intent = new Intent();
+                intent.putExtra("exitSignal",1);
+                setResult(302,intent);
+                finish();
+                Log.i("test","----1");
             }
 
         });
         builder.setNegativeButton("Cancel", null);
         builder.create().show();
     }
+
 
     @Override
     public void onBackPressed() {
@@ -263,11 +263,7 @@ public class AllTeachersActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode==Util.UPREQCODE&&resultCode==Util.UPRESCODE){
-//            Teacher teacher=(Teacher)data.getSerializableExtra(Util.keyresult);
-//            teacherList.set(pos,teacher);
-//            adapter.notifyDataSetChanged();
-//        }
+
     }
 
     void showTeacher(){

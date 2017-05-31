@@ -17,7 +17,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,10 +27,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import auribises.com.visitorbook.Adapters.VisitorentryAdapter;
 import auribises.com.visitorbook.Class.Visitorentry;
@@ -239,8 +235,6 @@ public class Visitor1Activity extends AppCompatActivity implements AdapterView.O
 
             }
         });
-        //AlertDialog dialog = builder.create();
-        //dialog.show();
 
         builder.create().show();
     }
@@ -252,7 +246,4 @@ public class Visitor1Activity extends AppCompatActivity implements AdapterView.O
         builder.setPositiveButton("Done",null);
         builder.create().show();
     }
-
-
-
 }

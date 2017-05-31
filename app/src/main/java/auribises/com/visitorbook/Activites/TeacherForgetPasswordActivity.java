@@ -20,7 +20,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
-import auribises.com.visitorbook.Class.Login;
+import auribises.com.visitorbook.Class.TeacherLogin;
 import auribises.com.visitorbook.R;
 import auribises.com.visitorbook.Util;
 import butterknife.ButterKnife;
@@ -36,7 +36,7 @@ public class TeacherForgetPasswordActivity extends AppCompatActivity {
 
     RequestQueue requestQueue;
 
-    Login login;
+    TeacherLogin teacherLogin;
 
     ConnectivityManager connectivityManager;
     NetworkInfo networkInfo;
@@ -54,7 +54,7 @@ public class TeacherForgetPasswordActivity extends AppCompatActivity {
         progressDialog.setMessage("Please Wait..");
         progressDialog.setCancelable(false);
 
-        login = new Login();
+        teacherLogin = new TeacherLogin();
     }
 
     boolean isNetworkConected() {
@@ -69,7 +69,7 @@ public class TeacherForgetPasswordActivity extends AppCompatActivity {
 
     public void OnChangePass(View view) {
         if (view.getId() == R.id.buttonSubmitt) {
-            login.setUsername(TxtEmail.getText().toString().trim());
+            teacherLogin.setUsername(TxtEmail.getText().toString().trim());
 
             if (validateFields()) {
                 if (isNetworkConected())
@@ -123,9 +123,9 @@ public class TeacherForgetPasswordActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<>();
-                map.put("email", login.getUsername());
+                map.put("email", teacherLogin.getUsername());
 
-                Log.i("test", login.toString());
+                Log.i("test", teacherLogin.toString());
                 return map;
 
             }
@@ -140,7 +140,7 @@ public class TeacherForgetPasswordActivity extends AppCompatActivity {
 
     boolean validateFields() {
         boolean flag = true;
-        if (login.getUsername().isEmpty()) {
+        if (teacherLogin.getUsername().isEmpty()) {
             flag = false;
             TxtEmail.setError("Please Enter Username");
         }

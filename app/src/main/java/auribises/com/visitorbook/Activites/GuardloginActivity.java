@@ -99,11 +99,11 @@ public class GuardloginActivity extends AppCompatActivity {
             if(view.getId()==R.id.forgotpasswordg){
                 Intent i = new Intent(GuardloginActivity.this,GuardForgetPasswordActivity.class);
                 startActivity(i);
-                //finish();
+
             }else{
                 Intent i = new Intent(GuardloginActivity.this,GuardChangePasswordActivity.class);
                 startActivity(i);
-                //finish();
+
             }
         }
     }
@@ -138,12 +138,12 @@ public class GuardloginActivity extends AppCompatActivity {
                     editor.putBoolean("loggedin", true);
                     editor.putString("username", input_username);
                     editor.commit();
-                    Toast.makeText(getApplicationContext(),"Login Success!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Guard Login Success!",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(GuardloginActivity.this, GuardhomeActivity.class);
                     startActivity(intent);
                     finish();
                 }else{
-                    Toast.makeText(GuardloginActivity.this,"Login Failure!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(GuardloginActivity.this,"Guard Login Failure!",Toast.LENGTH_LONG).show();
                 }
             }
         }, new Response.ErrorListener() {

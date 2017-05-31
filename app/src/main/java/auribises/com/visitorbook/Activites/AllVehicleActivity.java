@@ -132,12 +132,12 @@ public class AllVehicleActivity extends AppCompatActivity implements AdapterView
                         JSONObject jObj = jsonArray.getJSONObject(i);
 
                         id = jObj.getInt("id");
-                        n = jObj.getString("Name");
-                        p = jObj.getString("Phone");
-                        e = jObj.getString("Email");
-                        g = jObj.getString("Gender");
-                        v = jObj.getString("Vehicle");
-                        vn = jObj.getString("Vehiclenumber");
+                        n = jObj.getString("name");
+                        p = jObj.getString("phone");
+                        e = jObj.getString("email");
+                        g = jObj.getString("gender");
+                        v = jObj.getString("vehicle");
+                        vn = jObj.getString("vehiclenumber");
 
                         vehicleList.add(new Vehicle(id,n,p,e,g,v,vn));
                     }

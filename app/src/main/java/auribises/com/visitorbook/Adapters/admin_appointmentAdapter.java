@@ -11,16 +11,16 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import auribises.com.visitorbook.Class.adminappointment;
+import auribises.com.visitorbook.Class.Adminappointment;
 import auribises.com.visitorbook.R;
 
-public class admin_appointmentAdapter extends ArrayAdapter<adminappointment> {
+public class admin_appointmentAdapter extends ArrayAdapter<Adminappointment> {
 
     Context context;
     int resource;
-    ArrayList<adminappointment> adminappointmentsList,tempList;
+    ArrayList<Adminappointment> adminappointmentsList,tempList;
 
-    public admin_appointmentAdapter(Context context, int resource, ArrayList<adminappointment> objects) {
+    public admin_appointmentAdapter(Context context, int resource, ArrayList<Adminappointment> objects) {
         super(context, resource, objects);
 
         this.context = context;
@@ -41,12 +41,11 @@ public class admin_appointmentAdapter extends ArrayAdapter<adminappointment> {
         TextView txtName = (TextView)view.findViewById(R.id.textViewName);
         TextView txtGender = (TextView)view.findViewById(R.id.textViewGender);
 
-        adminappointment adminappointment = adminappointmentsList.get(position);
-        txtName.setText(adminappointment.getName());
-        //txtGender.setText(student.getGender());
-        txtGender.setText(String.valueOf(adminappointment.getId()));
+        Adminappointment Adminappointment = adminappointmentsList.get(position);
+        txtName.setText(Adminappointment.getName());
+        txtGender.setText(String.valueOf(Adminappointment.getId()));
 
-        Log.i("Test",adminappointment.toString());
+        Log.i("Test", Adminappointment.toString());
 
         return view;
     }
@@ -58,7 +57,7 @@ public class admin_appointmentAdapter extends ArrayAdapter<adminappointment> {
         if(str.length()==0){
             adminappointmentsList.addAll(tempList);
         }else{
-            for(adminappointment a : tempList){
+            for(Adminappointment a : tempList){
                 if(a.getName().toLowerCase().contains(str.toLowerCase())){
                     adminappointmentsList.add(a);
                 }

@@ -1,7 +1,6 @@
 package auribises.com.visitorbook.Activites;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -81,8 +80,8 @@ public class TeacherChangePasswordActivity extends AppCompatActivity {
             registerteacher.setEmail(TxtUsername.getText().toString().trim());
             registerteacher.setPassword(TxtNewPassword.getText().toString().trim());
 
-            Intent i = new Intent(TeacherChangePasswordActivity.this, TeacherChangePasswordActivity.class);
-            startActivity(i);
+//            Intent i = new Intent(TeacherChangePasswordActivity.this, TeacherChangePasswordActivity.class);
+//            startActivity(i);
 
             if (validateFields()) {
                 if (isNetworkConected())

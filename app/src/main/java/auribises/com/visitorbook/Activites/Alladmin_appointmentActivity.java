@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -33,8 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import auribises.com.visitorbook.Adapters.admin_appointmentAdapter;
-import auribises.com.visitorbook.Class.adminappointment;
-import auribises.com.visitorbook.MainActivity;
+import auribises.com.visitorbook.Class.Adminappointment;
 import auribises.com.visitorbook.R;
 import auribises.com.visitorbook.Util;
 import butterknife.ButterKnife;
@@ -48,11 +46,11 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
     @InjectView(R.id.editTextSearch)
     EditText eTxtSearch;
 
-    ArrayList<adminappointment> adminappointmentsList;
+    ArrayList<Adminappointment> adminappointmentsList;
 
     admin_appointmentAdapter adapter;
 
-    adminappointment adminappointment;
+    Adminappointment Adminappointment;
     int pos;
 
     RequestQueue requestQueue;
@@ -110,10 +108,10 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
                 try {
                     Log.i("test",response.toString());
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray jsonArray = jsonObject.getJSONArray("adminappointment");
+                    JSONArray jsonArray = jsonObject.getJSONArray("Adminappointment");
 
                     int id=0;
-                    String n="",p="",e="",g="",pu="",d="",t="",r="";
+                    String n="",p="",e="",g="",a="",pu="",d="",t="",r="";
                     for(int i=0;i<jsonArray.length();i++){
                         JSONObject jObj = jsonArray.getJSONObject(i);
 
@@ -122,12 +120,13 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
                         p = jObj.getString("phone");
                         e = jObj.getString("email");
                         g = jObj.getString("gender");
+                        a = jObj.getString("address");
                         pu = jObj.getString("purpose");
                         d = jObj.getString("date");
                         t = jObj.getString("time");
                         r = jObj.getString("room");
 
-                        adminappointmentsList.add(new adminappointment(id,n,p,e,g,pu,d,t,r));
+                        adminappointmentsList.add(new Adminappointment(id,n,p,e,g,a,pu,d,t,r));
                     }
 
                     adapter = new admin_appointmentAdapter(Alladmin_appointmentActivity.this,R.layout.adminappointment_list_item, adminappointmentsList);
@@ -161,7 +160,7 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         pos = i;
-        adminappointment = adminappointmentsList.get(i);
+        Adminappointment = adminappointmentsList.get(i);
         showOptions();
     }
 
@@ -179,7 +178,7 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
 
                     case 1:
                         Intent intent = new Intent(Alladmin_appointmentActivity.this,AdminappointmentActivity.class);
-                        intent.putExtra("keyadminappointment", adminappointment);
+                        intent.putExtra("keyadminappointment", Adminappointment);
                         startActivity(intent);
                         break;
 
@@ -197,15 +196,15 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
 
     void showadminappointment(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Details of "+ adminappointment.getName());
-        builder.setMessage(adminappointment.toString());
+        builder.setTitle("Details of "+ Adminappointment.getName());
+        builder.setMessage(Adminappointment.toString());
         builder.setPositiveButton("Done",null);
         builder.create().show();
     }
 
     void deleteadminappointment(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete "+ adminappointment.getName());
+        builder.setTitle("Delete "+ Adminappointment.getName());
         builder.setMessage("Do you wish to Delete?");
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -255,7 +254,7 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> map = new HashMap<>();
-                map.put("id",String.valueOf(adminappointment.getId()));
+                map.put("id",String.valueOf(Adminappointment.getId()));
                 return map;
             }
         };

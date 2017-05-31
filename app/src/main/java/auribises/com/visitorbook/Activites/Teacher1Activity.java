@@ -1,6 +1,5 @@
 package auribises.com.visitorbook.Activites;
 
-
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -17,8 +16,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -30,8 +27,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import auribises.com.visitorbook.Adapters.TeacherAdapter;
 import auribises.com.visitorbook.Class.Teacher;
@@ -240,7 +235,4 @@ public class Teacher1Activity extends AppCompatActivity implements AdapterView.O
         builder.setPositiveButton("Done",null);
         builder.create().show();
     }
-
-
-
 }

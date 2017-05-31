@@ -1,7 +1,6 @@
 package auribises.com.visitorbook.Activites;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +24,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import auribises.com.visitorbook.Class.Login;
 import auribises.com.visitorbook.Class.RegisterGuard;
 import auribises.com.visitorbook.R;
 import auribises.com.visitorbook.Util;
@@ -83,8 +81,8 @@ public class GuardChangePasswordActivity extends AppCompatActivity {
             registerguard.setEmail(TxtNewUsername.getText().toString().trim());
             registerguard.setPassword(TxtNewPassword.getText().toString().trim());
 
-            Intent i = new Intent(GuardChangePasswordActivity.this, GuardChangePasswordActivity.class);
-            startActivity(i);
+//            Intent i = new Intent(GuardChangePasswordActivity.this, GuardChangePasswordActivity.class);
+//            startActivity(i);
 
             if (validateFields()) {
                 if (isNetworkConected())

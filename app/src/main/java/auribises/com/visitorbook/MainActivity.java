@@ -10,8 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import auribises.com.visitorbook.Activites.Admin1Activity;
 import auribises.com.visitorbook.Activites.AdminappointmentActivity;
-import auribises.com.visitorbook.Activites.ProfileActivity;
 import auribises.com.visitorbook.Activites.RegisterAdminActivity;
 import auribises.com.visitorbook.Activites.RegisterGuardActivity;
 import auribises.com.visitorbook.Activites.HomeActivity;
@@ -64,8 +65,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            Intent i = new Intent(MainActivity.this, ProfileActivity.class);
-            startActivity(i);
+
             return true;
         }
       return super.onOptionsItemSelected(item);
@@ -101,6 +101,10 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, Vehicle1Activity.class);
             startActivity(i);
 
+        } else  if (id == R.id.nav_admin1) {
+            Intent i= new Intent(MainActivity.this, Admin1Activity.class);
+            startActivity(i);
+
        } else  if (id == R.id.nav_admin) {
             Intent i= new Intent(MainActivity.this, AdminappointmentActivity.class);
             startActivity(i);
@@ -108,11 +112,6 @@ public class MainActivity extends AppCompatActivity
        } else if (id == R.id.nav_logout) {
             Intent i= new Intent(MainActivity.this, HomeActivity.class);
             startActivity(i);
-
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

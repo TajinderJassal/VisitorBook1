@@ -356,7 +356,7 @@ public class VisitorEntryActivity extends AppCompatActivity implements CompoundB
 
                     if(success == 1){
                         Toast.makeText(VisitorEntryActivity.this,message,Toast.LENGTH_LONG).show();
-//
+
                         if(!updateMode){
 
                             editor.putString(Util.KEY_NAME, visitorentry.getName());
@@ -375,9 +375,6 @@ public class VisitorEntryActivity extends AppCompatActivity implements CompoundB
 
                             editor.commit();
 
-//                            Intent home = new Intent(VisitorEntryActivity.this,VisitorEntryActivity.class);
-//                            startActivity(home);
-//                            finish();
                        }
 
                         if(updateMode)
@@ -479,8 +476,6 @@ public class VisitorEntryActivity extends AppCompatActivity implements CompoundB
                 finish();
             }
         }
-
-
     }
 
     void clearFields(){
@@ -516,11 +511,22 @@ public class VisitorEntryActivity extends AppCompatActivity implements CompoundB
         int id = item.getItemId();
 
         if(id == 101){
+            Log.i("test","---0");
             Intent i = new Intent(VisitorEntryActivity.this,AllVisitorentryActivity.class);
-           startActivity(i);
+            startActivityForResult(i,301);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i("test","----2");
+        if(requestCode==301&&resultCode==302){
+            Log.i("test","----1");
+            finish();
+        }
     }
 
     boolean validateFields(){

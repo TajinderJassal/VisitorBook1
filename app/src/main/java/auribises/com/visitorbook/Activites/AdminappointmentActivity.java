@@ -38,7 +38,8 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import auribises.com.visitorbook.Class.adminappointment;
+
+import auribises.com.visitorbook.Class.Adminappointment;
 import auribises.com.visitorbook.R;
 import auribises.com.visitorbook.Util;
 import butterknife.ButterKnife;
@@ -54,6 +55,9 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
 
     @InjectView(R.id.editTextEmail)
     EditText eTxtEmail;
+
+    @InjectView(R.id.editTextAddress)
+    EditText eTxtAddress;
 
     @InjectView(R.id.editTextPurpose)
     EditText eTxtPurpose;
@@ -78,7 +82,7 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
     @InjectView(R.id.buttonAppointment)
     Button btnSubmit;
 
-    adminappointment adminappointment,rcvadminappointment;
+    Adminappointment Adminappointment,rcvadminappointment;
 
     ContentResolver resolver;
 
@@ -121,7 +125,7 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
         progressDialog.setMessage("Please Wait..");
         progressDialog.setCancelable(false);
 
-        adminappointment = new adminappointment();
+        Adminappointment = new Adminappointment();
 
         rbMale.setOnCheckedChangeListener(this);
         rbFemale.setOnCheckedChangeListener(this);
@@ -135,11 +139,12 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
 
 
         if(updateMode){
-            rcvadminappointment = (adminappointment) rcv.getSerializableExtra("keyadminappointment");
-            Log.i("test",adminappointment.toString());
+            rcvadminappointment = (Adminappointment) rcv.getSerializableExtra("keyadminappointment");
+            Log.i("test", Adminappointment.toString());
             eTxtName.setText(rcvadminappointment.getName());
             eTxtPhone.setText(rcvadminappointment.getPhone());
             eTxtEmail.setText(rcvadminappointment.getEmail());
+            eTxtAddress.setText(rcvadminappointment.getAddress());
             eTxtPurpose.setText(rcvadminappointment.getPurpose());
             eTxtDate.setText(rcvadminappointment.getDate());
             eTxtTime.setText(rcvadminappointment.getTime());
@@ -159,22 +164,21 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
 
         connectivityManager = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
         networkInfo = connectivityManager.getActiveNetworkInfo();
-        Log.i("insertIntoCloud",adminappointment.toString() );
+        Log.i("insertIntoCloud", Adminappointment.toString() );
         return (networkInfo!=null && networkInfo.isConnected());
 
     }
 
     public void clickHandler(View view){
         if(view.getId() == R.id.buttonAppointment){
-            adminappointment.setName(eTxtName.getText().toString().trim());
-            adminappointment.setPhone(eTxtPhone.getText().toString().trim());
-            adminappointment.setEmail(eTxtEmail.getText().toString().trim());
-            adminappointment.setPurpose(eTxtPurpose.getText().toString().trim());
-            adminappointment.setDate(eTxtDate.getText().toString().trim());
-            adminappointment.setTime(eTxtTime.getText().toString().trim());
-            adminappointment.setRoom(eTxtRoom.getText().toString().trim());
-
-
+            Adminappointment.setName(eTxtName.getText().toString().trim());
+            Adminappointment.setPhone(eTxtPhone.getText().toString().trim());
+            Adminappointment.setEmail(eTxtEmail.getText().toString().trim());
+            Adminappointment.setAddress(eTxtAddress.getText().toString().trim());
+            Adminappointment.setPurpose(eTxtPurpose.getText().toString().trim());
+            Adminappointment.setDate(eTxtDate.getText().toString().trim());
+            Adminappointment.setTime(eTxtTime.getText().toString().trim());
+            Adminappointment.setRoom(eTxtRoom.getText().toString().trim());
 
             //insertIntoDB();
 
@@ -200,21 +204,6 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
         }
 
         progressDialog.show();
-
-        // Volley String Request
-        /*StringRequest request = new StringRequest(Request.Method.GET, Util.INSERT_STUDENT, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                progressDialog.dismiss();
-                Toast.makeText(MainActivity.this,"Response: "+response,Toast.LENGTH_LONG).show();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(MainActivity.this,"Some Error"+error.getMessage(),Toast.LENGTH_LONG).show();
-            }
-        });*/
 
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -254,18 +243,19 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> map = new HashMap<>();
-                Log.i("test",adminappointment.toString() );
+                Log.i("test", Adminappointment.toString() );
                 if(updateMode)
                     map.put("id",String.valueOf(rcvadminappointment.getId()));
 
-                map.put("name",adminappointment.getName());
-                map.put("phone",adminappointment.getPhone());
-                map.put("email",adminappointment.getEmail());
-                map.put("gender",adminappointment.getGender());
-                map.put("purpose",adminappointment.getPurpose());
-                map.put("date",adminappointment.getDate());
-                map.put("time",adminappointment.getTime());
-                map.put("room",adminappointment.getRoom());
+                map.put("name", Adminappointment.getName());
+                map.put("phone", Adminappointment.getPhone());
+                map.put("email", Adminappointment.getEmail());
+                map.put("gender", Adminappointment.getGender());
+                map.put("address", Adminappointment.getAddress());
+                map.put("purpose", Adminappointment.getPurpose());
+                map.put("date", Adminappointment.getDate());
+                map.put("time", Adminappointment.getTime());
+                map.put("room", Adminappointment.getRoom());
                 return map;
             }
         };
@@ -281,9 +271,9 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
 
         if(b) {
             if (id == R.id.radioButtonMale) {
-                adminappointment.setGender("Male");
+                Adminappointment.setGender("Male");
             } else {
-                adminappointment.setGender("Female");
+                Adminappointment.setGender("Female");
             }
         }
     }
@@ -292,20 +282,21 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
 
         ContentValues values = new ContentValues();
 
-        values.put(Util.COL_NAMEADMIN,adminappointment.getName());
-        values.put(Util.COL_PHONEADMIN,adminappointment.getPhone());
-        values.put(Util.COL_EMAILADMIN,adminappointment.getEmail());
-        values.put(Util.COL_GENDERADMIN,adminappointment.getGender());
-        values.put(Util.COL_PURPOSEADMIN,adminappointment.getPurpose());
-        values.put(Util.COL_DATEADMIN,adminappointment.getDate());
-        values.put(Util.COL_TIMEADMIN,adminappointment.getTime());
-        values.put(Util.COL_ROOMADMIN,adminappointment.getRoom());
+        values.put(Util.COL_NAMEADMIN, Adminappointment.getName());
+        values.put(Util.COL_PHONEADMIN, Adminappointment.getPhone());
+        values.put(Util.COL_EMAILADMIN, Adminappointment.getEmail());
+        values.put(Util.COL_GENDERADMIN, Adminappointment.getGender());
+        values.put(Util.COL_ADDRESSADMIN, Adminappointment.getAddress());
+        values.put(Util.COL_PURPOSEADMIN, Adminappointment.getPurpose());
+        values.put(Util.COL_DATEADMIN, Adminappointment.getDate());
+        values.put(Util.COL_TIMEADMIN, Adminappointment.getTime());
+        values.put(Util.COL_ROOMADMIN, Adminappointment.getRoom());
 
         if(!updateMode){
             Uri dummy = resolver.insert(Util.ADMIN_APPOINTMENT_URI,values);
-            Toast.makeText(this,adminappointment.getName()+ " Registered Successfully "+dummy.getLastPathSegment(),Toast.LENGTH_LONG).show();
+            Toast.makeText(this, Adminappointment.getName()+ " Registered Successfully "+dummy.getLastPathSegment(),Toast.LENGTH_LONG).show();
 
-            Log.i("Insert",adminappointment.toString());
+            Log.i("Insert", Adminappointment.toString());
 
             clearFields();
         }else{
@@ -324,6 +315,7 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
         eTxtName.setText("");
         eTxtPhone.setText("");
         eTxtEmail.setText("");
+        eTxtAddress.setText("");
         eTxtPurpose.setText("");
         eTxtDate.setText("");
         eTxtTime.setText("");
@@ -335,7 +327,7 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        menu.add(0,101,0,"All Teacher");
+        menu.add(0,101,0,"All Appointments");
 
 
         return super.onCreateOptionsMenu(menu);
@@ -357,29 +349,34 @@ public class AdminappointmentActivity extends AppCompatActivity implements Compo
     boolean validateFields(){
         boolean flag = true;
 
-        if(adminappointment.getName().isEmpty()){
+        if(Adminappointment.getName().isEmpty()){
             flag = false;
             eTxtName.setError("Please Enter Name");
         }
 
-        if(adminappointment.getPhone().isEmpty()){
+        if(Adminappointment.getPhone().isEmpty()){
             flag = false;
             eTxtPhone.setError("Please Enter Phone");
         }else{
-            if(adminappointment.getPhone().length()<10){
+            if(Adminappointment.getPhone().length()<10){
                 flag = false;
                 eTxtPhone.setError("Please Enter 10 digits Phone Number");
             }
         }
 
-        if(adminappointment.getEmail().isEmpty()){
+        if(Adminappointment.getEmail().isEmpty()){
             flag = false;
             eTxtEmail.setError("Please Enter Email");
         }else{
-            if(!(adminappointment.getEmail().contains("@") && adminappointment.getEmail().contains("."))){
+            if(!(Adminappointment.getEmail().contains("@") && Adminappointment.getEmail().contains("."))){
                 flag = false;
                 eTxtEmail.setError("Please Enter correct Email");
             }
+        }
+
+        if(Adminappointment.getAddress().isEmpty()){
+            flag = false;
+            eTxtName.setError("Please Enter Address");
         }
 
         return flag;

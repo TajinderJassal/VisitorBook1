@@ -44,7 +44,6 @@ public class TeacherRegisterAdapter extends ArrayAdapter<RegisterTeacher> {
 
         RegisterTeacher registerteacher = registerteacherList.get(position);
         txtName.setText(registerteacher.getName());
-        //txtGender.setText(student.getGender());
         txtGender.setText(String.valueOf(registerteacher.getId()));
 
         Log.i("Test", registerteacher.toString());

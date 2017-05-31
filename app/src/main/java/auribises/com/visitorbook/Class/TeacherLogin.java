@@ -1,14 +1,14 @@
 package auribises.com.visitorbook.Class;
 
-public class Login {
+public class TeacherLogin {
 
     int id;
     String username,password;
 
-    public Login() {
+    public TeacherLogin() {
     }
 
-    public Login(int id, String username, String password) {
+    public TeacherLogin(int id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -40,7 +40,7 @@ public class Login {
 
     @Override
     public String toString() {
-        return "Login\n" +
+        return "teacherlogin\n" +
                 "\nID is: " + id +
                 "\nUsername is: " + username +
                 "\nPassword is: " + password ;

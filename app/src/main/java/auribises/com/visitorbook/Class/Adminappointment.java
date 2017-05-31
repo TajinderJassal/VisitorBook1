@@ -3,21 +3,22 @@ package auribises.com.visitorbook.Class;
 import java.io.Serializable;
 
 
-public class adminappointment implements Serializable{
+public class Adminappointment implements Serializable{
 
 
     int id;
-    String name,phone,email,gender,purpose,date,time,room;
+    String name,phone,email,gender,address,purpose,date,time,room;
 
-    public adminappointment() {
+    public Adminappointment() {
     }
 
-    public adminappointment(int id, String name, String phone, String email, String gender, String purpose, String date, String time, String room) {
+    public Adminappointment(int id, String name, String phone, String email, String gender, String address, String purpose, String date, String time, String room) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.gender = gender;
+        this.address = address;
         this.purpose = purpose;
         this.date = date;
         this.time = time;
@@ -64,6 +65,14 @@ public class adminappointment implements Serializable{
         this.gender = gender;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getPurpose() {
         return purpose;
     }
@@ -104,6 +113,7 @@ public class adminappointment implements Serializable{
                 "\nPhone is: " + phone +
                 "\nEmail is: " + email +
                 "\nGender is: " + gender +
+                "\nAddress is:" + address +
                 "\nPurpose is: " + purpose +
                 "\nDate is: " + date +
                 "\nTime is: " + time +
