@@ -442,10 +442,10 @@ public class Util {
     public static final Uri ADMIN_APPOINTMENT_URI = Uri.parse("content://auribises.com.Adminappointment.adminappointmentprovider/"+TAB_NAMEADMIN);
 
     // URL
-    public static final String INSERT_ADMIN_APPOINTMENT_PHP = "http://tajinderj.esy.es/Adminappointment/insert.php";
-    public static final String RETRIEVE_ADMIN_APPOINTMENT_PHP = "http://tajinderj.esy.es/Adminappointment/retrieve.php";
-    public static final String DELETE_ADMIN_APPOINTMENT_PHP = "http://tajinderj.esy.es/Adminappointment/delete.php";
-    public static final String UPDATE_ADMIN_APPOINTMENT_PHP = "http://tajinderj.esy.es/Adminappointment/update.php";
+    public static final String INSERT_ADMIN_APPOINTMENT_PHP = "http://tajinderj.esy.es/adminappointment/insert.php";
+    public static final String RETRIEVE_ADMIN_APPOINTMENT_PHP = "http://tajinderj.esy.es/adminappointment/retrieve.php";
+    public static final String DELETE_ADMIN_APPOINTMENT_PHP = "http://tajinderj.esy.es/adminappointment/delete.php";
+    public static final String UPDATE_ADMIN_APPOINTMENT_PHP = "http://tajinderj.esy.es/adminappointment/update.php";
 
     public static final int REQCODE= 101;
     public static final int UPREQCODE= 103;

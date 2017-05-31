@@ -91,14 +91,14 @@ public class AllVehicleActivity extends AppCompatActivity implements AdapterView
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Logout ");
         builder.setMessage("Do you wish to Logout?");
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Finish", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
-                Intent j= new Intent(AllVehicleActivity.this, HomeActivity.class);
-                startActivity(j);
-                retrieveFromCloud();
-
+                Intent intent = new Intent();
+                intent.putExtra("exitSignal",1);
+                setResult(302,intent);
+                finish();
+                Log.i("test","----1");
             }
 
         });

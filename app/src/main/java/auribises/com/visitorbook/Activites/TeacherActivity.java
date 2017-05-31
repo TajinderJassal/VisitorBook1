@@ -326,7 +326,7 @@ public class TeacherActivity extends AppCompatActivity implements CompoundButton
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        menu.add(0,101,0,"All Visitors");
+        menu.add(0,101,0,"All Appointments");
 
 
         return super.onCreateOptionsMenu(menu);

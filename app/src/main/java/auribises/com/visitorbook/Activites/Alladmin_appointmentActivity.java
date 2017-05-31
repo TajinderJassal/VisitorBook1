@@ -50,7 +50,7 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
 
     admin_appointmentAdapter adapter;
 
-    Adminappointment Adminappointment;
+    Adminappointment adminappointment;
     int pos;
 
     RequestQueue requestQueue;
@@ -108,7 +108,7 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
                 try {
                     Log.i("test",response.toString());
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray jsonArray = jsonObject.getJSONArray("Adminappointment");
+                    JSONArray jsonArray = jsonObject.getJSONArray("adminappointment");
 
                     int id=0;
                     String n="",p="",e="",g="",a="",pu="",d="",t="",r="";
@@ -160,7 +160,7 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         pos = i;
-        Adminappointment = adminappointmentsList.get(i);
+        adminappointment = adminappointmentsList.get(i);
         showOptions();
     }
 
@@ -178,7 +178,7 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
 
                     case 1:
                         Intent intent = new Intent(Alladmin_appointmentActivity.this,AdminappointmentActivity.class);
-                        intent.putExtra("keyadminappointment", Adminappointment);
+                        intent.putExtra("keyadminappointment", adminappointment);
                         startActivity(intent);
                         break;
 
@@ -196,15 +196,15 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
 
     void showadminappointment(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Details of "+ Adminappointment.getName());
-        builder.setMessage(Adminappointment.toString());
+        builder.setTitle("Details of "+ adminappointment.getName());
+        builder.setMessage(adminappointment.toString());
         builder.setPositiveButton("Done",null);
         builder.create().show();
     }
 
     void deleteadminappointment(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete "+ Adminappointment.getName());
+        builder.setTitle("Delete "+ adminappointment.getName());
         builder.setMessage("Do you wish to Delete?");
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -254,7 +254,7 @@ public class Alladmin_appointmentActivity extends AppCompatActivity implements A
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> map = new HashMap<>();
-                map.put("id",String.valueOf(Adminappointment.getId()));
+                map.put("id",String.valueOf(adminappointment.getId()));
                 return map;
             }
         };
