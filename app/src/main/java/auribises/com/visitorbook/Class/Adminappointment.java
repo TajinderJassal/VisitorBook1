@@ -2,7 +2,6 @@ package auribises.com.visitorbook.Class;
 
 import java.io.Serializable;
 
-
 public class Adminappointment implements Serializable{
 
 

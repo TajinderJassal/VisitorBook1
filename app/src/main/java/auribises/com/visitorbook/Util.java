@@ -466,8 +466,6 @@ public class Util {
     public static final String TEACHERCHANGEPASSWORD_PHP = "http://tajinderj.esy.es/Teacherchangepassword/teacherchange.php";
 
     public static final String ADMINCHANGEPASSWORD_PHP = "http://tajinderj.esy.es/Adminchangepassword/adminchange.php";
-
-    public static final String UPDATEPROFILE_PHP = "http://tajinderj.esy.es/registeradmin/updateProfile.php";
 }
 
 
